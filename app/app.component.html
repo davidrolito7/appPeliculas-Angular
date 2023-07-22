@@ -1,0 +1,42 @@
+
+<!-- <div class="container mt-3">
+    <router-outlet></router-outlet>
+</div> -->
+
+
+<div id="app">
+    <nav class="navbar navbar-expand navbar-dark bg-warning">
+      <a href="#" class="navbar-brand text-dark" >PELICULAS</a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+        <li class="nav-item">
+          <a href="/home" class="nav-link text-primary" routerLink="home">Inicio </a>
+        </li>
+        
+      </ul>
+  
+      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+        <li class="nav-item">
+          <a href="/register" class="nav-link text-dark" routerLink="register">Registrarse</a>
+        </li>
+        <li class="nav-item">
+          <a href="/login" class="nav-link text-dark" routerLink="login">Ingresar</a>
+        </li>
+      </ul>
+  
+      <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+        <li class="nav-item">
+          <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+        </li>
+        <li class="nav-item">
+          <a href class="nav-link" (click)="logout()">LogOut</a>
+        </li>
+      </ul>
+
+      
+    </nav>
+    <app-navbar></app-navbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  

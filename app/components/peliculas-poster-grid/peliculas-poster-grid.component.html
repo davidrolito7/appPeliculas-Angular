@@ -1,0 +1,31 @@
+<div class="movie-list">
+  <div class="movie-item animate__animated animate__fadeIn" *ngFor="let movie of getPeliculasPaginadas()">
+    <div class="movie-thumbnail-container">
+      <img
+        [src]="movie.poster_path | poster"
+        class="movie-thumbnail cursor" 
+        (click)="onMovieClick(movie)"
+      />
+    </div>
+    <div class="movie-details">
+      <h3 class="movie-title">{{ movie.title }}</h3>
+      <div class="movie-rating">
+        <div class="movie-rating-stars">
+          <ngb-rating style="color: orange" [rate]="movie.vote_average"></ngb-rating>
+        </div>
+        <div class="movie-rating-value">
+          {{ movie.vote_average | number:'1.1-2' }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Botones de paginación -->
+<div class="d-flex justify-content-center pagination-buttons">
+  <button (click)="anteriorPagina()" [class.active]="paginaActual === 1">Anterior</button>
+  <button (click)="cambiarPagina(pagina)" [disabled]="pagina === paginaActual" *ngFor="let pagina of paginas">
+    {{ pagina }}
+  </button>
+  <button (click)="siguientePagina()" [class.active]="paginaActual === totalPaginas">Siguiente</button>
+</div>
